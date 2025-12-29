@@ -7,4 +7,5 @@ class QueryRequest(BaseModel):
 
 
 class QueryResponse(BaseModel):
-    answer: str
+    question: str
+    generated_answer: str
