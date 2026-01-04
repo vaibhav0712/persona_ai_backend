@@ -1,0 +1,11 @@
+test/
+ingestion/
+TODO.txt
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+.venv/
+venv/
+.env

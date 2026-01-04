@@ -24,7 +24,7 @@ pc = Pinecone(PINECONE_API)
 pc_index = pc.Index(index=PINECONE_INDEX, host=PINECONE_HOST)
 
 
-def upsert_book_in_pinecone(book_path):
+def upsert_book_in_pinecone(book_path, namespace):
     with open(book_path) as fp:
 
         content = fp.read()
@@ -38,16 +38,18 @@ def upsert_book_in_pinecone(book_path):
         print("Upserting in batches...")
         for batch in batch_iterable(pinecone_chunks):
             print("processing batch of ", len(batch))
-            pc_index.upsert_records("Plato", batch)
+            pc_index.upsert_records(namespace, batch)
             time.sleep(2)
 
 
-if __name__ == "__main__":
+# Retry - 7849 by kafka
 
-    for book_id in ["1643"]:
+if __name__ == "__main__":
+    Author = "FranzKafka"
+    for book_id in ["7849"]:
         print("-" * 25)
         print("processing book:", book_id)
-        book_path = Path.cwd() / "books" / f"pg{book_id}-images.html"
+        book_path = Path.cwd() / f"books/{Author}" / f"pg{book_id}-images.html"
 
-        upsert_book_in_pinecone(book_path=book_path)
+        upsert_book_in_pinecone(book_path=book_path, namespace=Author)
         print("processed book:", book_id)

@@ -9,7 +9,7 @@ from core.config import settings
 model = ChatGroq(model=settings.default_model, api_key=settings.groq_api)
 
 
-def generate_answer(character: str, context: str, question: str) -> str:
+async def generate_answer(character: str, context: str, question: str) -> str:
     chain = get_prompt_template() | model | StrOutputParser()
     llm_prompt = {
         "character": character,
@@ -17,5 +17,5 @@ def generate_answer(character: str, context: str, question: str) -> str:
         "question": question,
     }
 
-    answer = chain.invoke(llm_prompt)
+    answer = await chain.ainvoke(llm_prompt)
     return answer

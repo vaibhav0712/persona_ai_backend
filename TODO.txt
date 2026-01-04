@@ -1,3 +1,1 @@
-1. work on /ask route so user can ask questions
-2. work on retriver service to get relevant documents
-
+1. MAKE CODE MORE ROBUST , FULL PIPELINE HAS BEEIN INTEGRATED JUST CHECK FEW EDGE CASESHello how are you?

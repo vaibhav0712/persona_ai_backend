@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 class QueryRequest(BaseModel):
     question: str
-    author: str = "Plato"
+    author: str
 
 
 class QueryResponse(BaseModel):

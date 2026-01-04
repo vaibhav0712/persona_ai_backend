@@ -12,5 +12,8 @@ class Settings(BaseSettings):
     groq_api: str
     default_model: str
 
+    class Config:
+        env_file = ".env"
+
 
 settings = Settings()

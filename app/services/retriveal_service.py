@@ -1,10 +1,11 @@
-from db.connection import pc, inx
+from db.connection import get_pinecone_index
 
 
-def retrieve_chunks(
+async def retrieve_chunks(
     namespace: str, question: str, top_k: int = 2
 ) -> list[dict[str:str]]:
-    response = inx.search_records(
+    inx = get_pinecone_index()
+    response = await inx.search_records(
         namespace=namespace,
         query={
             "inputs": {"text": question},
