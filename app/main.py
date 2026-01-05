@@ -10,9 +10,10 @@ import asyncio
 from api.v1 import query
 
 origins = [
-    "https://projectakira.netlify.app/",
+    "https://projectakira.netlify.app",
+    "http://localhost:5500",
     "http://localhost",
-    "http://127.0.0.1:5500/",
+    "http://127.0.0.1:5500",
 ]
 
 
