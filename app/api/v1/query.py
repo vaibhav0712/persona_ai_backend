@@ -38,6 +38,7 @@ async def ask(query: QueryRequest):
         generated_answer = await generate_answer(
             question=user_question, character=character, context=context
         )
+        # generated_answer = "test"
     except Exception as e:
         print(f"LLM Error: {str(e)}")
         raise HTTPException(

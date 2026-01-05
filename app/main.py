@@ -1,9 +1,29 @@
+from dotenv import load_dotenv
+
+load_dotenv()  # Only for Local development
+
 from fastapi import FastAPI
-from api.v1 import query
+from fastapi.middleware.cors import CORSMiddleware
 import time
 import asyncio
 
+from api.v1 import query
+
+origins = [
+    "https://projectakira.netlify.app/",
+    "http://localhost",
+    "http://127.0.0.1:5500/",
+]
+
+
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 print("log")
 
