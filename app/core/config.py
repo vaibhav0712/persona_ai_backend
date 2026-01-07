@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     default_character: str
     groq_api: str
     default_model: str
+    redis_host: str
+    redis_password: str
 
     class Config:
         env_file = ".env"
