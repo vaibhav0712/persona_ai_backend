@@ -39,7 +39,7 @@ async def rate_limit(request: Request, call_next):
         request_count = await redis_client.get(key)
         print("client", client_ip, "count", request_count)
 
-        if request_count and int(request_count) > 3:
+        if request_count and int(request_count) > 2:
             return JSONResponse(
                 status_code=429, content={"detail": "Too many request. slow down"}
             )
@@ -48,7 +48,7 @@ async def rate_limit(request: Request, call_next):
             pipe.incr(key)  # auto set counter
 
             if request_count is None:
-                pipe.expire(key, 10)
+                pipe.expire(key, 60)
 
             await pipe.execute()
 
