@@ -63,7 +63,7 @@ async def rate_limit(request: Request, call_next):
 @app.get("/")
 def get_root(request: Request):
     print("--- hit root ---")
-    return {"Message": "Welcome to project akira"}
+    return {"Message": "Welcome to Persona AI"}
 
 
 @app.get("/health")
